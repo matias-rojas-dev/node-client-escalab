@@ -1,6 +1,6 @@
 
 
-export const headerReducer = (state = null, action) => {
+export const headerReducer = (state = false, action) => {
     switch (action.type) {
         case "SET_KEY_ITEM":
             return action.payload;

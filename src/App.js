@@ -18,7 +18,7 @@ const App = () => {
   return (
     <Suspense
       fallback={
-        <div className='col text-danger p-5'>
+        <div className='col text-center p-5'>
           <LoadingOutlined />
         </div>
       }
@@ -32,7 +32,6 @@ const App = () => {
         <Route exact path="/register" component={Register} />
         <Route path="/register/complete" component={RegisterComplete} />
         <Route component={NotFound} />
-
       </Switch>
     </Suspense>
   );

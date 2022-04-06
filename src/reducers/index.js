@@ -5,10 +5,10 @@ import { searchReducer } from "./searchReducer";
 import { cartReducer } from "./cartReducer";
 
 const rootReducer = combineReducers({
-    headerReducer,
-    userReducer,
-    searchReducer,
-    cartReducer
+    header: headerReducer,
+    user: userReducer,
+    search: searchReducer,
+    cart: cartReducer
 });
 
 export default rootReducer;
