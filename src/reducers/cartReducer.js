@@ -1,6 +1,4 @@
-let initialState = [
-
-];
+let initialState = [];
 
 if (typeof window !== "undefined") {
     if (localStorage.getItem("cart")) {

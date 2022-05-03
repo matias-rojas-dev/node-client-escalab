@@ -1,54 +1,52 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-
+import React, {useCallback, useEffect, useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import {useHistory} from "react-router-dom";
 
 const useCurrentItemHeader = () => {
 
-    const dispatch = useDispatch();
-    const history = useHistory();
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const {header} = useSelector((state) => ({...state}));
+  
+  const [key, setKey] = useState(null);
+  
+  const dispatchKey = useCallback(
+    (payload) => dispatch({type: "SET_KEY_ITEM",payload}), 
+    [dispatch]
+  )
 
-    const [key, setKey] = useState(null);
-    const [email, setEmail] = useState(undefined);
+  const checkCurrentPage = useCallback(() =>{
+    const availablePages = {
+      home: "home",
+      shop: "shop",
+      cart: "cart",
+      register: "register",
+      login: "login",
+      user: "user",
+      admin: "user-admin",
+      dash: "user-dash"
+    };
 
-    const { headerReducer } = useSelector((state) => ({ ...state }));
+    const defaultPage = header || "home";
+    const currentPage = history.location.pathname.split("/")[1];
+    const payload = availablePages[currentPage] || defaultPage;
+    dispatchKey(payload);
+  }, [dispatchKey, header, history.location.pathname]);
 
-    const dispatchKey = useCallback(
-        (payload) => dispatch({ type: "SET_KEY_ITEM", payload }),
-        [dispatch]
-    )
+  const checkIfKeyContainValue = () => {
 
-    // memoazing
-    const checkCurrentPage = useCallback(() => {
-        const availablePage = {
-            home: "home",
-            shop: "shop",
-            cart: "cart",
-            register: "register",
-            login: "login",
-            user: "user-dash",
-            admin: "user-admin"
-        };
+  }
 
-        const defaultPage = headerReducer || "home";
-        const currentPage = history.location.pathname.split("/")[1];
-        const payload = availablePage[currentPage] || defaultPage;
-        dispatchKey(payload);
-    }, [dispatchKey, headerReducer, history.location.pathname]);
 
-    const checkIfKeyContainsValue = useCallback(
-        () => !key && checkCurrentPage(),
-        [checkCurrentPage, key]
-    );
+  useEffect(() => {
+    
+  }, [])
+  
 
-    useEffect(
-        () => checkIfKeyContainsValue(),
-        [checkIfKeyContainsValue]
-    );
-
-    return { setKey: (key) => setKey(dispatchKey(key)) };
-
-};
+  return (
+    <div>useCurrentItemHeader</div>
+  )
+}
 
 
 

@@ -7,7 +7,7 @@ import "antd/dist/antd.css";
 
 // redux
 import rootReducer from "./reducers";
-import { createStore } from "redux";
+import { legacy_createStore as createStore } from "redux";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 

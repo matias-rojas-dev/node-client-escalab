@@ -1,8 +1,8 @@
 import React, { lazy, Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import { LoadingOutlined } from '@ant-design/icons';
 import ErrorBoundary from 'antd/lib/alert/ErrorBoundary';
+import { LoadingOutlined } from '@ant-design/icons';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
@@ -24,7 +24,7 @@ const App = () => {
       }
     >
 
-      <Header />
+      <Header /> 
       <ToastContainer />
       <Switch>
         <Route exact path="/" component={Home} />
